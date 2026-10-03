@@ -3,114 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestor Académico | Notas</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Gestión de Notas de Alumnos</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="topbar">
-        <div class="brand">
-            <div class="brand-icon">∑</div>
-            <div>
-                <span class="eyebrow">GESTIÓN ACADÉMICA</span>
-                <h1>Control de Notas</h1>
-            </div>
-        </div>
-        <div class="course-badge">10 ALUMNOS · 3 CERTÁMENES</div>
-    </header>
-
-    <main class="container">
-        <section class="hero">
-            <div>
-                <span class="eyebrow">PANEL DE CONTROL</span>
-                <h2>Registro y análisis de calificaciones</h2>
-                <p>Ingresa las notas de los 10 alumnos y obtén automáticamente los promedios y resultados del curso.</p>
-            </div>
-            <div class="hero-mark">10×3</div>
-        </section>
-
-        <section class="card form-card">
-            <div class="section-heading">
-                <div>
-                    <span class="eyebrow">01 · DATOS</span>
-                    <h3>Registro de alumnos</h3>
-                </div>
-                <span class="status">Notas de 0 a 100</span>
+    <div class="card">
+        <form id="alumnoForm">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" required autocomplete="off">
             </div>
 
-            <form id="notasForm" novalidate>
-                <div id="alumnosContainer" class="students-grid"></div>
-                <div id="formMessage" class="message" role="alert"></div>
-
-                <div class="actions">
-                    <button type="submit" class="primary-btn">
-                        Calcular resultados <span>→</span>
-                    </button>
-                    <button type="reset" id="limpiarBtn" class="secondary-btn">
-                        Limpiar
-                    </button>
-                </div>
-            </form>
-        </section>
-
-        <section id="resultados" class="results hidden">
-            <div class="section-heading">
-                <div>
-                    <span class="eyebrow">02 · ANÁLISIS</span>
-                    <h3>Resultados del curso</h3>
-                </div>
-                <span id="resultadoFecha" class="status"></span>
+            <div class="form-group">
+                <label for="c1">Certamen 1:</label>
+                <input type="number" id="c1" min="0" max="100" step="any" required>
             </div>
 
-            <div id="resumenCards" class="summary-grid"></div>
-
-            <div class="card table-card">
-                <div class="card-title">
-                    <span class="eyebrow">RENDIMIENTO</span>
-                    <h3>Calificaciones por alumno</h3>
-                </div>
-
-                <div class="table-wrap">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Alumno</th>
-                                <th>Certamen 1</th>
-                                <th>Certamen 2</th>
-                                <th>Certamen 3</th>
-                                <th>Promedio</th>
-                                <th>Estado</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tablaResultados"></tbody>
-                    </table>
-                </div>
+            <div class="form-group">
+                <label for="c2">Certamen 2:</label>
+                <input type="number" id="c2" min="0" max="100" step="any" required>
             </div>
 
-            <div class="lower-grid">
-                <div class="card">
-                    <div class="card-title">
-                        <span class="eyebrow">RANKING</span>
-                        <h3>Alumnos ordenados por promedio</h3>
-                    </div>
-                    <div id="ranking" class="ranking"></div>
-                </div>
-
-                <div class="card">
-                    <div class="card-title">
-                        <span class="eyebrow">PROMEDIOS</span>
-                        <h3>Resumen de certámenes</h3>
-                    </div>
-                    <div id="courseAverages" class="averages"></div>
-                </div>
+            <div class="form-group">
+                <label for="c3">Certamen 3:</label>
+                <input type="number" id="c3" min="0" max="100" step="any" required>
             </div>
-        </section>
-    </main>
 
-    <footer>
-        <p>Gestor Académico · JavaScript · HTML · CSS</p>
-    </footer>
+            <div id="mensajeError" class="error-msg">Por favor ingresa notas válidas (0 a 100).</div>
 
-    <script type="module" src="js/app.js"></script>
+            <button type="submit" id="btnAgregar">Agregar Alumno</button>
+        </form>
+    </div>
+    <div class="card" id="cardResultados" style="display: none;">
+        <div id="resultados"></div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
